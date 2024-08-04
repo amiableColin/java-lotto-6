@@ -1,10 +1,15 @@
 package lotto;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println(promptPurchaseMoney());
+//        System.out.println(promptPurchaseMoney());
+        System.out.println(promptWinningLottoNumbers());
     }
 
     private static int promptPurchaseMoney() {
@@ -20,6 +25,20 @@ public class Application {
                     throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
                 return Integer.parseInt(money);
             } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static Lotto promptWinningLottoNumbers() {
+        while (true) {
+            System.out.println("당첨 번호를 입력해 주세요.");
+            String inputData = readLine();
+            List<Integer> winningNumbers = Arrays.stream(inputData.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+            try {
+                return new Lotto(winningNumbers);
+            }
+            catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }

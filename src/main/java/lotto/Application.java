@@ -34,8 +34,8 @@ public class Application {
         while (true) {
             System.out.println("당첨 번호를 입력해 주세요.");
             String inputData = readLine();
-            List<Integer> winningNumbers = Arrays.stream(inputData.split(",")).map(Integer::parseInt).collect(Collectors.toList());
             try {
+                List<Integer> winningNumbers = Arrays.stream(inputData.split(",")).map(num -> new LottoNumber(num).getNumber()).collect(Collectors.toList());
                 return new Lotto(winningNumbers);
             }
             catch (IllegalArgumentException e) {

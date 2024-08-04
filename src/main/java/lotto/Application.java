@@ -9,7 +9,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
 //        System.out.println(promptPurchaseMoney());
-        System.out.println(promptWinningLottoNumbers());
+//        System.out.println(promptWinningLottoNumbers());
+        System.out.println(promptBonusNumber().getNumber());
     }
 
     private static int promptPurchaseMoney() {
@@ -39,6 +40,18 @@ public class Application {
                 return new Lotto(winningNumbers);
             }
             catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static LottoNumber promptBonusNumber() {
+        while (true) {
+            System.out.println("보너스 번호를 입력해 주세요.");
+            String bonusNumber = readLine();
+            try {
+                return new LottoNumber(bonusNumber);
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }

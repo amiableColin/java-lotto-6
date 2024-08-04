@@ -18,7 +18,7 @@ public class LottoNumber {
     private static void validatePositiveInteger(String number) {
         boolean isPositiveInteger = number.chars().allMatch(Character::isDigit);
         if (!isPositiveInteger) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력하여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1 이상의 정수만 입력하여야 합니다.");
         }
     }
 

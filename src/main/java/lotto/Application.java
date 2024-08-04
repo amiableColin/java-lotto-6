@@ -1,5 +1,4 @@
 package lotto;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,9 +7,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-//        System.out.println(promptPurchaseMoney());
+        int purchaseMoney = promptPurchaseMoney();
+        LottoPurchaser lottoPurchaser = new LottoPurchaser(purchaseMoney);
+        List<List<Integer>> lottoList = lottoPurchaser.purchaseLotto();
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        System.out.println(lottoList.stream().map(Object::toString).collect(Collectors.joining("\n")));
 //        System.out.println(promptWinningLottoNumbers());
-        System.out.println(promptBonusNumber().getNumber());
+//        System.out.println(promptBonusNumber().getNumber());
     }
 
     private static int promptPurchaseMoney() {

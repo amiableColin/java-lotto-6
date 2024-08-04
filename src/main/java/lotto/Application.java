@@ -10,10 +10,9 @@ public class Application {
         int purchaseMoney = promptPurchaseMoney();
         LottoPurchaser lottoPurchaser = new LottoPurchaser(purchaseMoney);
         List<List<Integer>> lottoList = lottoPurchaser.purchaseLotto();
-        System.out.println(lottoList.size() + "개를 구매했습니다.");
-        System.out.println(lottoList.stream().map(Object::toString).collect(Collectors.joining("\n")));
-//        System.out.println(promptWinningLottoNumbers());
-//        System.out.println(promptBonusNumber().getNumber());
+        printPurchasedLottoList(lottoList);
+        System.out.println(promptWinningLottoNumbers());
+        System.out.println(promptBonusNumber().getNumber());
     }
 
     private static int promptPurchaseMoney() {
@@ -21,7 +20,6 @@ public class Application {
             System.out.println("구입금액을 입력해주세요.");
             String money = readLine();
             boolean isInteger = money.chars().allMatch(Character::isDigit);
-
             try {
                 if (!isInteger)
                     throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 입력하셨습니다.");
@@ -58,5 +56,10 @@ public class Application {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private static void printPurchasedLottoList(List<List<Integer>> lottoList) {
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        System.out.println(lottoList.stream().map(Object::toString).collect(Collectors.joining("\n")));
     }
 }

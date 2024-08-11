@@ -32,4 +32,10 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int getMatchCount(Lotto another) {
+        HashSet<Integer> set = new HashSet<>(this.numbers);
+        set.retainAll(new HashSet<Integer>(another.getNumbers()));
+        return set.size();
+    }
 }

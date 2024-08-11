@@ -1,12 +1,10 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LottoPurchaser {
     public static final int PRICE_PER_LOTTO = 1000;
@@ -24,9 +22,6 @@ public class LottoPurchaser {
     }
 
     private List<Integer> generateLotto() {
-        HashSet<Integer> lotto = new HashSet<>();
-        while (lotto.size() < 6)
-            lotto.add(pickNumberInRange(1, 45));
-        return lotto.stream().sorted().collect(Collectors.toList());
+        return pickUniqueNumbersInRange(1, 45, 6);
     }
 }

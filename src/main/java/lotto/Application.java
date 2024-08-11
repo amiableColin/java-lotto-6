@@ -25,7 +25,7 @@ public class Application {
 
         WinningStatistics winningStatistics = new WinningStatistics(winningLotto, bonus, lottoList);
         winningStatistics.printWinningStatics();
-        winningStatistics.rateOfReturn();
+        winningStatistics.printRateOfReturn();
     }
 
     private static int promptPurchaseMoney() {

@@ -27,5 +27,4 @@ public class LottoNumber {
             throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1부터 45 사이여야 합니다.");
         }
     }
-
 }

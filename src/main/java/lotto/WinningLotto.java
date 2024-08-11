@@ -1,5 +1,9 @@
 package lotto;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class WinningLotto {
     private Lotto winningLotto;
     private LottoNumber bonusNumber;
@@ -9,11 +13,14 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public int[] getResult(Lotto userLotto) {
-        int[] result = new int[2];
-        result[0] = winningLotto.getMatchCount(userLotto);
-        if (userLotto.getNumbers().contains(bonusNumber.getNumber()))
-            result[1] = 1;
+    public List<Integer> getResult(Lotto userLotto) {
+        List<Integer> result = new ArrayList<>();
+        result.add(winningLotto.getMatchCount(userLotto));
+        if (userLotto.getNumbers().contains(bonusNumber.getNumber())) {
+            result.add(1);
+            return result;
+        }
+        result.add(0);
         return result;
     }
 }

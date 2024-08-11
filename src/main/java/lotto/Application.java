@@ -1,4 +1,7 @@
 package lotto;
+
+import lotto.services.WinningStatistics;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,9 +13,19 @@ public class Application {
         int purchaseMoney = promptPurchaseMoney();
         LottoPurchaser lottoPurchaser = new LottoPurchaser(purchaseMoney);
         List<List<Integer>> lottoList = lottoPurchaser.purchaseLotto();
+
         printPurchasedLottoList(lottoList);
-        System.out.println(promptWinningLottoNumbers());
-        System.out.println(promptBonusNumber().getNumber());
+        System.out.println();
+
+        Lotto winningLotto = promptWinningLottoNumbers();
+        System.out.println();
+
+        LottoNumber bonus = promptBonusNumber();
+        System.out.println();
+
+        WinningStatistics winningStatistics = new WinningStatistics(winningLotto, bonus, lottoList);
+        winningStatistics.printWinningStatics();
+        winningStatistics.rateOfReturn();
     }
 
     private static int promptPurchaseMoney() {
@@ -59,6 +72,7 @@ public class Application {
     }
 
     private static void printPurchasedLottoList(List<List<Integer>> lottoList) {
+        System.out.println();
         System.out.println(lottoList.size() + "개를 구매했습니다.");
         System.out.println(lottoList.stream().map(Object::toString).collect(Collectors.joining("\n")));
     }

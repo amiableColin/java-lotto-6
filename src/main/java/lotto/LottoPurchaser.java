@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class LottoPurchaser {
-    private static final int PRICE_PER_LOTTO = 1000;
+    public static final int PRICE_PER_LOTTO = 1000;
     private final int lottoCount;
 
     private List<Lotto> lottoList;
@@ -26,7 +26,7 @@ public class LottoPurchaser {
     private List<Integer> generateLotto() {
         HashSet<Integer> lotto = new HashSet<>();
         while (lotto.size() < 6)
-            lotto.add(pickNumberInRange(1, 46));
+            lotto.add(pickNumberInRange(1, 45));
         return lotto.stream().sorted().collect(Collectors.toList());
     }
 }

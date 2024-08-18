@@ -60,7 +60,9 @@ public class WinningStatistics {
 
     private void initWinningMoney() {
         winningMoneys.put(List.of(3,0), 5_000);
+        winningMoneys.put(List.of(3,1), 5_000);
         winningMoneys.put(List.of(4,0), 50_000);
+        winningMoneys.put(List.of(4,1), 50_000);
         winningMoneys.put(List.of(5,0), 1_500_000);
         winningMoneys.put(List.of(5,1), 30_000_000);
         winningMoneys.put(List.of(6,0), 2_000_000_000);
@@ -68,7 +70,9 @@ public class WinningStatistics {
 
     private void initMatchedData() {
         matchedData.put(List.of(3, 0), 0);
+        matchedData.put(List.of(3, 1), 0);
         matchedData.put(List.of(4, 0), 0);
+        matchedData.put(List.of(4, 1), 0);
         matchedData.put(List.of(5, 0), 0);
         matchedData.put(List.of(5, 1), 0);
         matchedData.put(List.of(6, 0), 0);

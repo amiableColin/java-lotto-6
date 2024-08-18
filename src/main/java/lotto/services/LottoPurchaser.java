@@ -1,4 +1,6 @@
-package lotto;
+package lotto.services;
+
+import lotto.entity.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,8 +11,6 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 public class LottoPurchaser {
     public static final int PRICE_PER_LOTTO = 1000;
     private final int lottoCount;
-
-    private List<Lotto> lottoList;
 
     public LottoPurchaser(int price) {
         this.lottoCount = price / PRICE_PER_LOTTO;

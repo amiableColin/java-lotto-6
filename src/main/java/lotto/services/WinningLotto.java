@@ -1,6 +1,8 @@
-package lotto;
+package lotto.services;
 
-import java.sql.Array;
+import lotto.entity.Lotto;
+import lotto.entity.LottoNumber;
+
 import java.util.ArrayList;
 import java.util.List;
 

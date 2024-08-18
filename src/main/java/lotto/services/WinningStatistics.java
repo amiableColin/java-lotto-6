@@ -1,22 +1,27 @@
 package lotto.services;
 
-import lotto.Lotto;
-import lotto.LottoNumber;
-import lotto.LottoPurchaser;
-import lotto.WinningLotto;
+import lotto.entity.Lotto;
+import lotto.entity.LottoNumber;
 
 import java.util.*;
 
 public class WinningStatistics {
     private final WinningLotto winningLotto;
     private final List<List<Integer>> userLottoList;
-    private static final HashMap <List<Integer>, Integer> winningMoneys = new HashMap<>();
+    public static final Map <List<Integer>, Integer> winningMoneys = Map.of(
+            List.of(3,0), 5_000,
+            List.of(3,1), 5_000,
+            List.of(4,0), 50_000,
+            List.of(4,1), 50_000,
+            List.of(5,0), 1_500_000,
+            List.of(5,1), 30_000_000,
+            List.of(6,0), 2_000_000_000
+            );
     private final HashMap<List<Integer>, Integer> matchedData = new HashMap<>();
 
     public WinningStatistics(Lotto winningLotto, LottoNumber bonusNumber, List<List<Integer>> userLottoList) {
         this.winningLotto = new WinningLotto(winningLotto, bonusNumber);
         this.userLottoList = userLottoList;
-        initWinningMoney();
         initMatchedData();
         calcWinningCounts();
     }
@@ -39,7 +44,7 @@ public class WinningStatistics {
         System.out.printf("총 수익률은 %.1f%%입니다.", rate * 100);
     }
 
-    private double rateOfReturn() {
+    public double rateOfReturn() {
         double rate = matchedData.keySet().stream()
                 .map(key -> matchedData.get(key) * winningMoneys.get(key))
                 .mapToDouble(Integer::doubleValue)
@@ -58,16 +63,6 @@ public class WinningStatistics {
         .forEach(d -> matchedData.put(d, matchedData.get(d) + 1));
     }
 
-    private void initWinningMoney() {
-        winningMoneys.put(List.of(3,0), 5_000);
-        winningMoneys.put(List.of(3,1), 5_000);
-        winningMoneys.put(List.of(4,0), 50_000);
-        winningMoneys.put(List.of(4,1), 50_000);
-        winningMoneys.put(List.of(5,0), 1_500_000);
-        winningMoneys.put(List.of(5,1), 30_000_000);
-        winningMoneys.put(List.of(6,0), 2_000_000_000);
-    }
-
     private void initMatchedData() {
         matchedData.put(List.of(3, 0), 0);
         matchedData.put(List.of(3, 1), 0);
@@ -77,4 +72,6 @@ public class WinningStatistics {
         matchedData.put(List.of(5, 1), 0);
         matchedData.put(List.of(6, 0), 0);
     }
+
+    public HashMap<List<Integer>, Integer> getMatchedData() {return this.matchedData;}
 }

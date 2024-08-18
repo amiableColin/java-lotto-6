@@ -1,5 +1,8 @@
-package lotto;
+package lotto.controller;
 
+import lotto.entity.Lotto;
+import lotto.entity.LottoNumber;
+import lotto.services.LottoPurchaser;
 import lotto.services.WinningStatistics;
 
 import java.util.Arrays;
@@ -23,9 +26,8 @@ public class Application {
         LottoNumber bonus = promptBonusNumber();
         System.out.println();
 
-        WinningStatistics winningStatistics = new WinningStatistics(winningLotto, bonus, lottoList);
-        winningStatistics.printWinningStatics();
-        winningStatistics.printRateOfReturn();
+        WinningResultController winningResultController = new WinningResultController(winningLotto, bonus, lottoList);
+        winningResultController.run();
     }
 
     private static int promptPurchaseMoney() {

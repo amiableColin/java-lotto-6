@@ -1,22 +1,30 @@
 package lotto;
 
-import java.util.List;
-
 public class LottoNumber {
     private int number;
-    public LottoNumber(String number) {
-        validatePositiveInteger(number);
-        validateInRange(Integer.parseInt(number));
-        this.number = Integer.parseInt(number);
+    public LottoNumber(Integer number) {
+        validatePositive(number);
+        validateInRange(number);
+        this.number = number;
     }
 
     public int getNumber() {
         return number;
     }
 
+    public static LottoNumber from(String str) {
+        validateInteger(str);
+        return new LottoNumber(Integer.parseInt(str));
+    }
 
-    private static void validatePositiveInteger(String number) {
-        boolean isPositiveInteger = number.chars().allMatch(Character::isDigit);
+    public static void validateInteger(String str) {
+        boolean isInteger = str.matches("^-?\\d+$");
+        if (!isInteger) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 정수만 입력하여야 합니다.");
+        }
+    }
+    private static void validatePositive(int number) {
+        boolean isPositiveInteger = number > 0;
         if (!isPositiveInteger) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1 이상의 정수만 입력하여야 합니다.");
         }

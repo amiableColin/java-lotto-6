@@ -50,7 +50,7 @@ public class Application {
             System.out.println("당첨 번호를 입력해 주세요.");
             String inputData = readLine();
             try {
-                List<Integer> winningNumbers = Arrays.stream(inputData.split(",")).map(num -> new LottoNumber(num).getNumber()).collect(Collectors.toList());
+                List<Integer> winningNumbers = Arrays.stream(inputData.split(",")).map(num -> LottoNumber.from(num).getNumber()).collect(Collectors.toList());
                 return new Lotto(winningNumbers);
             }
             catch (IllegalArgumentException e) {
@@ -64,7 +64,7 @@ public class Application {
             System.out.println("보너스 번호를 입력해 주세요.");
             String bonusNumber = readLine();
             try {
-                return new LottoNumber(bonusNumber);
+                return LottoNumber.from(bonusNumber);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

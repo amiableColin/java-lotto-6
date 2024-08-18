@@ -6,7 +6,6 @@ import lotto.LottoPurchaser;
 import lotto.WinningLotto;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class WinningStatistics {
     private final WinningLotto winningLotto;
